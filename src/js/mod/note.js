@@ -1,5 +1,6 @@
 require('less/note.less')
 
+var path = require('path')
 var Toast = require('mod/toast.js').Toast
 var Event = require('mod/event.js')
 
@@ -123,6 +124,7 @@ Note.prototype = {
 		let $animalIcon = $noteHeader.find('.animal .icon use')
 		let $changeDoll = $('.change-doll')
 		let $changeLogo = $('.change-logo')
+		let $music = $('.music')
 
 		let color = this.colors[Math.floor(Math.random()*15)]
 		let animal = this.animals[Math.floor(Math.random()*25)]
@@ -138,7 +140,8 @@ Note.prototype = {
 			$animalIcon.attr('xlink:href', iceCream)
 		}
  		let i = 0,
- 			j = 0
+ 			j = 0,
+ 			k = 0
 		$changeDoll.on('click', function(){
 			let arr1 = [iceCream, animal]
 			let arr2 = ['rgb(240, 106, 109)', 'rgb(102, 204, 255)']
@@ -150,15 +153,52 @@ Note.prototype = {
 
 		$changeLogo.on('click', function(){
 			
-			let arr = ['rgb(240, 106, 109)', 'rgb(102, 204, 255)']
+			let arr = ['rgb(240, 106, 109)', 'rgb(38, 163, 130)']
 			j = j%2
-			_this.str = '<style>div.logo>div.one:before{background-color:'+arr[j]+'}</style>'
+			_this.str = '<style type=text/css class="logo-color">'+
+						'.note .note-header .logo .one:before,'+
+						'.note .note-header .logo .one:after,'+
+						'.note .note-header .logo .two:before,'+
+						'.note .note-header .logo .two:after'+
+						'{background-color:'+
+						arr[j]+
+						'}</style>'
 			$changeLogo.css('color', arr[j])
-			
+			if ($('head .logo-color')) {
+				$('head .logo-color').remove()
+			}
+
+			$('head').append($(_this.str));
 			j++
 
 		})
-		$('head').append($(_this.str));
+
+		
+
+		var audio = new Audio()
+		audio.src = path.join(__dirname, '../audio/Preparation.mp3')
+		audio.volume = .5
+		audio.autoplay = true
+		audio.addEventListener('ended', function(){
+			setTimeout(function(){
+				audio.src = path.join(__dirname, '../audio/Preparation.mp3')
+			}, 500)
+		})
+		
+		$music.on('click', function(){
+			let arr = ['MusicOff', 'MusicOn']
+			let color = ['rgb(240, 106, 109)', 'rgb(102, 204, 255)']
+			k = k % 2
+			$music.css('color', color[k])
+			document.querySelector('.music').innerText = arr[k]
+			if(arr[k] === 'MusicOff'){
+				audio.pause()
+			}else{
+				audio.play()
+			}
+			k++
+		})
+
 	},
 
 	setLayout: function(){
