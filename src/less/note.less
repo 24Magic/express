@@ -1,0 +1,105 @@
+.note {
+	position: absolute;
+	margin: 10px;
+	border-radius: 3px;
+	border: 1px solid #f06d6a;
+	box-shadow: 0 0 4px 2px rgba(38, 163, 130, .5);  
+	&:hover {
+		.note-header .animal {
+			transform: rotateZ(90deg);
+
+		}
+		.note-header .note-delete {
+			display: block;
+		}	
+	}
+	.note-header {
+		position: relative;
+		width: 160px;
+		height: 20px;
+		cursor: move;
+		.animal {
+			position: absolute;
+			top: -50%;
+			left: 5%;
+			z-index: 1;
+			transition: all .1s;
+			.icon{
+				width: 40px;
+				height: 40px;
+			}
+		}
+
+		.note-delete {
+			position: absolute;
+			right: 5px;
+			cursor: pointer;
+			display: none;
+			.iconfont {
+				font-size: 12px;
+				color: rgb(240,106,109);
+			}			
+		}
+		
+		
+		.logo {
+			position: relative;		
+			.one,
+			.two {
+				&:before,
+				&:after {
+					position: absolute; 
+					top: -10px;
+					left: 50%;
+					margin-left: -10px;
+					width: 20px;
+					height: 20px;
+					content: '';
+					display: block;
+					background-color: rgb(38,163,130); 
+					box-shadow: 1px 2px 10px 0px rgba(240, 106, 109, .2),0 0 20px 0 rgba(255, 255, 255, .3);
+				}
+				&:before {
+					transform:  skewX(45deg);
+				}
+				&:after {
+					transform:  skewX(-45deg);
+				}
+			}
+			.one {
+				transform: rotateZ(0deg);
+			}
+			.two {
+				transform: rotateZ(90deg);
+			}
+			
+		}
+	}
+
+	.note-ct {
+		width: 160px;
+		box-sizing: border-box;
+		padding: 10px;
+		outline: none;
+	}
+
+	.note-footer {
+		position: relative;
+		width: 160px;
+		height: 20px;		
+		background-color: transparent;
+		.date{
+			position: absolute;
+			top: 2px;
+			left: 60px;
+			font-size: 12px;
+			color: rgb(102, 204, 255);
+		} 
+	}
+
+}
+
+.draggble {
+	opacity: .5;
+}
+

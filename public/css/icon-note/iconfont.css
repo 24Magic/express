@@ -1,0 +1,119 @@
+
+@font-face {font-family: "iconfont";
+  src: url('iconfont.eot?t=1495027822135'); /* IE9*/
+  src: url('iconfont.eot?t=1495027822135#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('iconfont.woff?t=1495027822135') format('woff'), /* chrome, firefox */
+  url('iconfont.ttf?t=1495027822135') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('iconfont.svg?t=1495027822135#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family:"iconfont" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-add:before { content: "\e731"; }
+
+.icon-add1:before { content: "\e60b"; }
+
+.icon-delete:before { content: "\e6c2"; }
+
+.icon-delete1:before { content: "\e61b"; }
+
+.icon-github:before { content: "\eaf6"; }
+
+.icon-delete2:before { content: "\e602"; }
+
+.icon-icecream-:before { content: "\e6fa"; }
+
+.icon-icecream-1:before { content: "\e6fb"; }
+
+.icon-icecream-2:before { content: "\e6fc"; }
+
+.icon-icecream-3:before { content: "\e6fd"; }
+
+.icon-icecream-4:before { content: "\e6fe"; }
+
+.icon-icecream-5:before { content: "\e6ff"; }
+
+.icon-icecream-6:before { content: "\e700"; }
+
+.icon-icecream-7:before { content: "\e701"; }
+
+.icon-icecream-8:before { content: "\e702"; }
+
+.icon-icecream-9:before { content: "\e703"; }
+
+.icon-icecream-10:before { content: "\e704"; }
+
+.icon-icecream-11:before { content: "\e705"; }
+
+.icon-icecream-12:before { content: "\e706"; }
+
+.icon-icecream-13:before { content: "\e707"; }
+
+.icon-icecream-14:before { content: "\e708"; }
+
+.icon-icecream-15:before { content: "\e709"; }
+
+.icon-icecream-16:before { content: "\e70a"; }
+
+.icon-icecream-17:before { content: "\e70b"; }
+
+.icon-icecream-18:before { content: "\e70c"; }
+
+.icon-icecream-19:before { content: "\e70d"; }
+
+.icon-frog:before { content: "\e722"; }
+
+.icon-panda:before { content: "\e723"; }
+
+.icon-owl:before { content: "\e724"; }
+
+.icon-sheep:before { content: "\e725"; }
+
+.icon-chicken:before { content: "\e726"; }
+
+.icon-duck:before { content: "\e727"; }
+
+.icon-bear:before { content: "\e728"; }
+
+.icon-lion:before { content: "\e729"; }
+
+.icon-bull:before { content: "\e72a"; }
+
+.icon-hippo:before { content: "\e72b"; }
+
+.icon-dog:before { content: "\e72c"; }
+
+.icon-tiger:before { content: "\e72d"; }
+
+.icon-sea-lion:before { content: "\e72e"; }
+
+.icon-cat:before { content: "\e72f"; }
+
+.icon-monkey:before { content: "\e730"; }
+
+.icon-elephant:before { content: "\e732"; }
+
+.icon-pig:before { content: "\e733"; }
+
+.icon-alligator:before { content: "\e734"; }
+
+.icon-snake:before { content: "\e735"; }
+
+.icon-mouse:before { content: "\e736"; }
+
+.icon-donkey:before { content: "\e737"; }
+
+.icon-deer:before { content: "\e738"; }
+
+.icon-horse:before { content: "\e739"; }
+
+.icon-seal:before { content: "\e73a"; }
+
+.icon-rabbit:before { content: "\e73b"; }
+
