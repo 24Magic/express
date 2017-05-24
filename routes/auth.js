@@ -15,19 +15,19 @@ passport.deserializeUser(function(obj, done) {
 })
 
 passport.use(new JirenguStrategy({
-	clientID: '9b30f455b3ca97432fda3101b0cca7091c1258e85baa2e07bdcd0f9660de6967',
+	clientID: 'e02877eb869bd29c0d6d1d03322c6903a67a555d0bda1ead721b0acf49f011fd',
 	tokenURL: 'http://user.jirengu.com/oauth/token',
-	clientSecret: '1ef66b0cf9a22e3f5826871af19c32b3e06be096611258e370037caafe1e0e73',
-	callbackURL: "http://localhost:4000/auth/jirengu/callback"},
+	clientSecret: '46b03c2ef97d1479221fc59f4550348d922daa48ffbef30abe0efbf474280313',
+	callbackURL: "http://note.gzbamboo.org/auth/jirengu/callback"},
 	function(accessToken, refreshToken, profile, done){
 	  done(null, profile)
 	} 
 ))
 
 passport.use(new GitHubStrategy({
-	clientID: 'a259f2e0a13c6dac105f',
-    clientSecret: '338179738d7fa9274db1fa41a0190fa143cc238e',
-    callbackURL: "http://localhost:4000/auth/github/callback"
+	clientID: '42d7ccd010f5ff08455b',
+    clientSecret: 'd6529d35e57a5e27d4a533364fcfe43754c88118',
+    callbackURL: "http://note.gzbamboo.org/auth/github/callback"
 	},
 	function(accessToken, refreshToken, profile, done){
 	  done(null, profile)
