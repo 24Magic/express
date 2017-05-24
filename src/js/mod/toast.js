@@ -10,12 +10,12 @@ function toast(msg, time){
 
 toast.prototype = {
 	createToast: function(){
-		let tpl = '<div class="toast">' + this.msg + '</div>'
+		var tpl = '<div class="toast">' + this.msg + '</div>'
 		this.$toast = $(tpl)
 		$('body').append(this.$toast)
 	},
 	showToast: function(){
-		let _this = this
+		var _this = this
 		this.$toast.fadeIn(300, ()=>{
 			setTimeout(()=>{
 				_this.$toast.fadeOut(300, ()=>{

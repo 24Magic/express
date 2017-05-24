@@ -17,7 +17,7 @@ var EventCenter = (function(){
 		if(!events[event]){
 			return
 		}
-		for(let i=0; i<events[event].length; i++){
+		for(var i=0; i<events[event].length; i++){
 			events[event][i].handler(arguments)
 		}
 	}

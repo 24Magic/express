@@ -80,7 +80,7 @@ Note.prototype = {
 	},
 
 	createNote: function () {
-		let tpl = '<div class="note">' +
+		var tpl = '<div class="note">' +
 
 				  '<div class="note-header">' + 
 
@@ -95,7 +95,7 @@ Note.prototype = {
 				  '</svg>' +
 				  '</div>' +
 
-				  '<div class="note-delete"><i class="iconfont icon-delete"></i></div>' + 
+				  '<div class="note-devare"><i class="iconfont icon-devare"></i></div>' + 
 				  '</div>' +
 
 				  '<div class="note-ct" contenteditable="true">' +				  
@@ -107,8 +107,8 @@ Note.prototype = {
 
 				  '</div>'
 		this.$note = $(tpl)
-		let $noteCt = this.$note.find('.note-ct')
-		let $date = this.$note.find('.note-footer .date')
+		var $noteCt = this.$note.find('.note-ct')
+		var $date = this.$note.find('.note-footer .date')
 		$noteCt.html(this.opts.context)
 		$date.html(this.opts.date)
 		this.opts.$ct.append(this.$note)
@@ -117,19 +117,19 @@ Note.prototype = {
 	},
 
 	setStyle: function(){
-		let _this = this
+		var _this = this
 
-		let $noteHeader = this.$note.find('.note-header')
-		let $noteCt = this.$note.find('.note-ct')
-		let $animalIcon = $noteHeader.find('.animal .icon use')
-		let $changeDoll = $('.change-doll')
-		let $changeLogo = $('.change-logo')
-		let $music = $('.music')
+		var $noteHeader = this.$note.find('.note-header')
+		var $noteCt = this.$note.find('.note-ct')
+		var $animalIcon = $noteHeader.find('.animal .icon use')
+		var $changeDoll = $('.change-doll')
+		var $changeLogo = $('.change-logo')
+		var $music = $('.music')
 
-		let color = this.colors[Math.floor(Math.random()*15)]
-		let animal = this.animals[Math.floor(Math.random()*25)]
-		let num = Math.floor(Math.random()*2)
-		let iceCream = '#icon-icecream-' + Math.floor(Math.random()*19+1)
+		var color = this.colors[Math.floor(Math.random()*15)]
+		var animal = this.animals[Math.floor(Math.random()*25)]
+		var num = Math.floor(Math.random()*2)
+		var iceCream = '#icon-icecream-' + Math.floor(Math.random()*19+1)
 		
 		
 
@@ -139,12 +139,12 @@ Note.prototype = {
 		if($changeDoll.css('color') === 'rgb(240, 106, 109)') {
 			$animalIcon.attr('xlink:href', iceCream)
 		}
- 		let i = 0,
+ 		var i = 0,
  			j = 0,
  			k = 0
 		$changeDoll.on('click', function(){
-			let arr1 = [iceCream, animal]
-			let arr2 = ['rgb(240, 106, 109)', 'rgb(102, 204, 255)']
+			var arr1 = [iceCream, animal]
+			var arr2 = ['rgb(240, 106, 109)', 'rgb(102, 204, 255)']
 			i = i%2
 			$changeDoll.css('color', arr2[i])
 			$animalIcon.attr('xlink:href', arr1[i])
@@ -153,7 +153,7 @@ Note.prototype = {
 
 		$changeLogo.on('click', function(){
 			
-			let arr = ['rgb(240, 106, 109)', 'rgb(38, 163, 130)']
+			var arr = ['rgb(240, 106, 109)', 'rgb(38, 163, 130)']
 			j = j%2
 			_this.str = '<style type=text/css class="logo-color">'+
 						'.note .note-header .logo .one:before,'+
@@ -186,8 +186,8 @@ Note.prototype = {
 		})
 		
 		$music.on('click', function(){
-			let arr = ['MusicOff', 'MusicOn']
-			let color = ['rgb(240, 106, 109)', 'rgb(102, 204, 255)']
+			var arr = ['MusicOff', 'MusicOn']
+			var color = ['rgb(240, 106, 109)', 'rgb(102, 204, 255)']
 			k = k % 2
 			$music.css('color', color[k])
 			document.querySelector('.music').innerText = arr[k]
@@ -202,7 +202,7 @@ Note.prototype = {
 	},
 
 	setLayout: function(){
-		let _this = this
+		var _this = this
 		if(_this.click){
 			clearTimeout(_this.click)
 		}
@@ -212,15 +212,15 @@ Note.prototype = {
 	},
 
 	bindEvent: function(){
-		let _this = this,
+		var _this = this,
 			$note = this.$note,
 			$noteHeader = $note.find('.note-header'),
 			$noteCt = $note.find('.note-ct'),
 			$date = this.$note.find('.note-footer .date'),
-			$delete = $note.find('.note-delete')
+			$devare = $note.find('.note-devare')
 
-		$delete.on('click', function(){
-			_this.delete()
+		$devare.on('click', function(){
+			_this.devare()
 		})
 
 		//通过html5自带的contenteditable属性，改变内容后设置了save事件
@@ -237,7 +237,7 @@ Note.prototype = {
 				_this.date()
 				_this.setLayout()
 								
-				let str = $noteCt.html() + $date.html()
+				var str = $noteCt.html() + $date.html()
 				if(_this.id){
 					_this.edit($noteCt.html(), $date.html())
 				}else{
@@ -249,7 +249,7 @@ Note.prototype = {
 
 		//拖动事件
 		$noteHeader.on('mousedown', function(e){
-			let eX = e.pageX - $note.offset().left,	//点击位置到note左边缘的距离
+			var eX = e.pageX - $note.offset().left,	//点击位置到note左边缘的距离
 				eY = e.pageY - $note.offset().top
 			$note.addClass('draggble').data('evtPos', {x: eX, y: eY})	//保存上面计算的距离数据	
 		}).on('mouseup', function(){
@@ -267,23 +267,23 @@ Note.prototype = {
 
 	//添加日期时间
 	date: function(){
-		let $date = this.$note.find('.note-footer .date')
-		let date =  new Date()
-		let year = date.getFullYear()
-		let month = date.getMonth() + 1
-		let day = date.getDate()
-		let hours = date.getHours()
-		let minutes = date.getMinutes()
+		var $date = this.$note.find('.note-footer .date')
+		var date =  new Date()
+		var year = date.getFullYear()
+		var month = date.getMonth() + 1
+		var day = date.getDate()
+		var hours = date.getHours()
+		var minutes = date.getMinutes()
 		if(hours < 10) hours = '0' + hours
 		if(minutes < 10) minutes = '0' + minutes
-		let str =  hours + ':' + minutes + ' ' + year + '-' + month + '-' + day
+		var str =  hours + ':' + minutes + ' ' + year + '-' + month + '-' + day
 		$date.html('')
 		$date.html(str)
 	},
 
 	//改变note内容
 	edit: function(msg){
-		let _this = this
+		var _this = this
 		$.post('/api/notes/edit', {
 			id: this.id,	//
 			note: msg
@@ -298,7 +298,7 @@ Note.prototype = {
 
 	//添加note
 	add: function(msg){
-		let _this = this
+		var _this = this
 		$.post('/api/notes/add', {
 			note: msg
 		}).done(function(ret){
@@ -315,15 +315,15 @@ Note.prototype = {
 	},
 
 	//删除note
-	delete: function(){
-		let _this = this
-		$.post('/api/notes/delete', {
+	devare: function(){
+		var _this = this
+		$.post('/api/notes/devare', {
 			id: this.id
 		}).done(function(ret){
 			if(ret.status === 0){				
 				_this.$note.remove()
 				Event.fire('waterfall')
-				Toast('delete success')
+				Toast('devare success')
 			}	
 			Toast(ret.errorMsg) 
 		})

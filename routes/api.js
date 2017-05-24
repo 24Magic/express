@@ -5,7 +5,7 @@ var Note = require('../model/note')
 
 //获取所有的note
 router.get('/notes', function(req, res, next) {
-	let opts = {raw: true}
+	var opts = {raw: true}
 	if(req.session.user){
 	    opts.where = {uid:req.session.user.id }
 	 }
@@ -25,8 +25,8 @@ router.post('/notes/add', function(req, res, next){
 	if(!req.session.user){
 	   return res.send({status: 1, errorMsg: 'login please'})
 	}
-	let note = req.body.note
-	let uid = req.session.user.id
+	var note = req.body.note
+	var uid = req.session.user.id
 	Note.sync().then(function(){
 		Note.create({text: note, uid: uid}).then(function(){
 			console.log(arguments)
@@ -42,9 +42,9 @@ router.post('/notes/edit', function(req, res, next){
 	if(!req.session.user){
 	   return res.send({status: 1, errorMsg: 'login please'})
 	}
-	let noteId = req.body.id
-	let note = req.body.note
-	let uid = req.session.user.id
+	var noteId = req.body.id
+	var note = req.body.note
+	var uid = req.session.user.id
 
 	Note.sync().then(function(){
 		Note.update({text: note}, {where:{id: noteId, uid: uid}}).then(function(list){
@@ -64,8 +64,8 @@ router.post('/notes/delete', function(req, res, next){
 	if(!req.session.user){
 	   return res.send({status: 1, errorMsg: 'login please'})
 	}
-	let noteId = req.body.id
-	let uid = req.session.user.id
+	var noteId = req.body.id
+	var uid = req.session.user.id
 	Note.sync().then(function(){
 		Note.destroy({where: {id: noteId, uid: uid}}).then(function(deleteLen){
 			if(deleteLen === 0){
