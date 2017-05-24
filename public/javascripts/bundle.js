@@ -518,45 +518,6 @@ function updateLink(linkElement, options, obj) {
 /* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function($) {__webpack_require__(15)
-
-
-function toast(msg, time){
-	this.msg = msg
-	this.existTime = time || 1000
-	this.createToast()
-	this.showToast()
-}
-
-toast.prototype = {
-	createToast: function(){
-		let tpl = '<div class="toast">' + this.msg + '</div>'
-		this.$toast = $(tpl)
-		$('body').append(this.$toast)
-	},
-	showToast: function(){
-		let _this = this
-		this.$toast.fadeIn(300, ()=>{
-			setTimeout(()=>{
-				_this.$toast.fadeOut(300, ()=>{
-					_this.$toast.remove()
-				})
-			}, _this.existTime)
-		})
-	}
-}
-
-function Toast(msg, time){
-	return new toast(msg, time)
-}
-
-module.exports.Toast = Toast
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
 /* WEBPACK VAR INJECTION */(function(process) {// Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -785,6 +746,45 @@ var substr = 'ab'.substr(-1) === 'b'
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
 
 /***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function($) {__webpack_require__(15)
+
+
+function toast(msg, time){
+	this.msg = msg
+	this.existTime = time || 1000
+	this.createToast()
+	this.showToast()
+}
+
+toast.prototype = {
+	createToast: function(){
+		let tpl = '<div class="toast">' + this.msg + '</div>'
+		this.$toast = $(tpl)
+		$('body').append(this.$toast)
+	},
+	showToast: function(){
+		let _this = this
+		this.$toast.fadeIn(300, ()=>{
+			setTimeout(()=>{
+				_this.$toast.fadeOut(300, ()=>{
+					_this.$toast.remove()
+				})
+			}, _this.existTime)
+		})
+	}
+}
+
+function Toast(msg, time){
+	return new toast(msg, time)
+}
+
+module.exports.Toast = Toast
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
 /* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -819,7 +819,7 @@ if(false) {
 /* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function($) {var Toast = __webpack_require__(4).Toast
+/* WEBPACK VAR INJECTION */(function($) {var Toast = __webpack_require__(5).Toast
 var Event = __webpack_require__(1)
 var Note = __webpack_require__(18).Note
 
@@ -1320,9 +1320,9 @@ module.exports = __webpack_amd_options__;
 /* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function($, __dirname) {__webpack_require__(6)
+/* WEBPACK VAR INJECTION */(function($) {__webpack_require__(6)
 
-var path = __webpack_require__(5)
+var path = __webpack_require__(4)
 var noteMessage = __webpack_require__(7).NoteMessage
 var Event = __webpack_require__(1)
 var WaterFall = __webpack_require__(8)
@@ -1333,27 +1333,6 @@ $('.add-note').on('click', function(){
 	noteMessage.add()
 })
 
-var audio = new Audio()
-audio.src = path.join(__dirname, './audio/Preparation.mp3')
-audio.autoplay = true
-audio.addEventListener('ended', function(){
-	setTimeout(function(){
-		audio.src = path.join(__dirname, './audio/Preparation.mp3')
-	}, 500)
-})
-var i = 0
-$('.music').on('click', function(){
-	let arr = ['MusicOff', 'MusicOn']
-	i = arr % 2
-	$('.music').html(arr[i])
-	if(i === 0){
-		audio.pause()
-	}else{
-		audio.play()
-	}
-	i++
-})
-
 Event.on('waterfall', function(){
 	WaterFall.init($('#content'), $('.note'))
 })
@@ -1362,15 +1341,16 @@ Event.on('waterfall', function(){
 
 
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0), "/"))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
 /* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function($) {__webpack_require__(14)
+/* WEBPACK VAR INJECTION */(function($, __dirname) {__webpack_require__(14)
 
-var Toast = __webpack_require__(4).Toast
+var path = __webpack_require__(4)
+var Toast = __webpack_require__(5).Toast
 var Event = __webpack_require__(1)
 
 /*
@@ -1493,6 +1473,7 @@ Note.prototype = {
 		let $animalIcon = $noteHeader.find('.animal .icon use')
 		let $changeDoll = $('.change-doll')
 		let $changeLogo = $('.change-logo')
+		let $music = $('.music')
 
 		let color = this.colors[Math.floor(Math.random()*15)]
 		let animal = this.animals[Math.floor(Math.random()*25)]
@@ -1508,7 +1489,8 @@ Note.prototype = {
 			$animalIcon.attr('xlink:href', iceCream)
 		}
  		let i = 0,
- 			j = 0
+ 			j = 0,
+ 			k = 0
 		$changeDoll.on('click', function(){
 			let arr1 = [iceCream, animal]
 			let arr2 = ['rgb(240, 106, 109)', 'rgb(102, 204, 255)']
@@ -1520,15 +1502,52 @@ Note.prototype = {
 
 		$changeLogo.on('click', function(){
 			
-			let arr = ['rgb(240, 106, 109)', 'rgb(102, 204, 255)']
+			let arr = ['rgb(240, 106, 109)', 'rgb(38, 163, 130)']
 			j = j%2
-			_this.str = '<style>div.logo>div.one:before{background-color:'+arr[j]+'}</style>'
+			_this.str = '<style type=text/css class="logo-color">'+
+						'.note .note-header .logo .one:before,'+
+						'.note .note-header .logo .one:after,'+
+						'.note .note-header .logo .two:before,'+
+						'.note .note-header .logo .two:after'+
+						'{background-color:'+
+						arr[j]+
+						'}</style>'
 			$changeLogo.css('color', arr[j])
-			
+			if ($('head .logo-color')) {
+				$('head .logo-color').remove()
+			}
+
+			$('head').append($(_this.str));
 			j++
 
 		})
-		$('head').append($(_this.str));
+
+		
+
+		var audio = new Audio()
+		audio.src = path.join(__dirname, '../audio/Preparation.mp3')
+		audio.volume = .5
+		audio.autoplay = true
+		audio.addEventListener('ended', function(){
+			setTimeout(function(){
+				audio.src = path.join(__dirname, '../audio/Preparation.mp3')
+			}, 500)
+		})
+		
+		$music.on('click', function(){
+			let arr = ['MusicOff', 'MusicOn']
+			let color = ['rgb(240, 106, 109)', 'rgb(102, 204, 255)']
+			k = k % 2
+			$music.css('color', color[k])
+			document.querySelector('.music').innerText = arr[k]
+			if(arr[k] === 'MusicOff'){
+				audio.pause()
+			}else{
+				audio.play()
+			}
+			k++
+		})
+
 	},
 
 	setLayout: function(){
@@ -1662,7 +1681,7 @@ Note.prototype = {
 
 module.exports.Note = Note
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0), "/"))
 
 /***/ })
 /******/ ]);
