@@ -833,7 +833,7 @@ var NoteMessage = (function(){
 		 			var id = artical.id
 		 			var date = artical.text.slice(-15)
 		 			var reg = /\d{2}:\d{2}\s\d{4}-\d-\d{2}/g
-		 			if(!date.match(reg)){
+		 			if(date.match(reg) != date){
 		 				var date_ =  new Date()
 						var year = date_.getFullYear()
 						var month = date_.getMonth() + 1
@@ -846,6 +846,7 @@ var NoteMessage = (function(){
 		 				// date = '08:08 2008-08-08'
 		 			}
 		 			var text = artical.text.replace(date, '')
+
 		 			new Note({
 		 				id: id,
 		 				context: text,
@@ -927,7 +928,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "body {\n  height: 662px;\n  font-size: 14px;\n  background-image: url('https://ooo.0o0.ooo/2017/05/18/591d922c1cb2e.jpg');\n  background-size: cover;\n}\nbody #nav {\n  height: 30px;\n  background-color: #404040;\n}\nbody #nav:after {\n  content: '';\n  display: block;\n  clear: both;\n}\nbody #nav .add-note {\n  float: left;\n  margin-left: 10px;\n  cursor: pointer;\n}\nbody #nav .add-note .iconfont {\n  font-size: 30px;\n  color: #66ccff;\n}\nbody #nav .add-note .iconfont:hover {\n  color: #f06a6d;\n  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3), 0 0 6px #66ccff;\n}\nbody #nav .change-doll,\nbody #nav .change-logo,\nbody #nav .music {\n  float: left;\n  font-size: 12px;\n  margin: 3px 0 3px 20px;\n  padding: 3px;\n  color: #66ccff;\n  cursor: pointer;\n  border: 1px solid #404040;\n}\nbody #nav .change-doll:hover,\nbody #nav .change-logo:hover,\nbody #nav .music:hover {\n  border: 1px solid #66ccff;\n  box-shadow: 1px 1px 4px 2px rgba(255, 255, 255, 0.2);\n}\nbody #nav .login {\n  float: right;\n  margin-right: 15px;\n  display: flex;\n}\nbody #nav .login .login-github,\nbody #nav .login .login-normal {\n  text-decoration: none;\n  margin: 6px;\n  color: #fff;\n  font-size: 12px;\n}\nbody #nav .login .login-github:hover,\nbody #nav .login .login-normal:hover {\n  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3), 0 0 6px #66ccff;\n}\nbody #nav .login .login-github .iconfont,\nbody #nav .login .login-normal .iconfont {\n  color: #ffffff;\n}\nbody #nav .login .login-github .iconfont:hover,\nbody #nav .login .login-normal .iconfont:hover {\n  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3), 0 0 6px #66ccff;\n}\nbody #nav .login .lgin {\n  margin: 6px;\n  color: #ffffff;\n  font-size: 12px;\n}\nbody #nav .login .lgin:hover {\n  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3), 0 0 6px #66ccff;\n}\nbody #nav .login .lgin img {\n  width: 20px;\n  height: 20px;\n  border-radius: 50%;\n}\nbody #nav .login .lgin a {\n  text-decoration: none;\n  color: #ffffff;\n}\nbody #content {\n  position: relative;\n  margin: 20px 0 10px 30px;\n}\n", ""]);
+exports.push([module.i, "body {\n  height: 662px;\n  font-size: 14px;\n  background-image: url('https://ooo.0o0.ooo/2017/05/18/591d922c1cb2e.jpg');\n  background-size: cover;\n}\nbody #nav {\n  height: 30px;\n  background-color: #404040;\n}\nbody #nav:after {\n  content: '';\n  display: block;\n  clear: both;\n}\nbody #nav .add-note {\n  float: left;\n  margin-left: 10px;\n  cursor: pointer;\n}\nbody #nav .add-note .iconfont {\n  font-size: 30px;\n  color: #66ccff;\n}\nbody #nav .add-note .iconfont:hover {\n  color: #f06a6d;\n  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3), 0 0 6px #66ccff;\n}\nbody #nav .change-doll,\nbody #nav .change-logo,\nbody #nav .music {\n  position: relative;\n  float: left;\n  font-size: 12px;\n  margin: 3px 0 3px 20px;\n  padding: 3px;\n  color: #66ccff;\n  cursor: pointer;\n  border: 1px solid #404040;\n}\nbody #nav .change-logo {\n  width: 40px;\n  top: 4px;\n  height: 8px;\n}\nbody #nav .change-logo .one:before,\nbody #nav .change-logo .two:before,\nbody #nav .change-logo .one:after,\nbody #nav .change-logo .two:after {\n  position: absolute;\n  top: 0px;\n  left: 50%;\n  margin-left: -5px;\n  width: 10px;\n  height: 10px;\n  content: '';\n  display: block;\n  background-color: #26a382;\n  box-shadow: 1px 2px 10px 0px rgba(240, 106, 109, 0.2), 0 0 20px 0 rgba(255, 255, 255, 0.3);\n}\nbody #nav .change-logo .one:before,\nbody #nav .change-logo .two:before {\n  transform: skewX(45deg);\n}\nbody #nav .change-logo .one:after,\nbody #nav .change-logo .two:after {\n  transform: skewX(-45deg);\n}\nbody #nav .change-logo .one {\n  transform: rotateZ(0deg);\n}\nbody #nav .change-logo .two {\n  transform: rotateZ(90deg);\n  position: absolute;\n  top: 8px;\n  width: 40px;\n  left: 8px;\n}\nbody #nav .change-doll {\n  top: -1px;\n  width: 40px;\n  height: 16px;\n}\nbody #nav .change-doll .icon {\n  width: 20px;\n  height: 20px;\n}\nbody #nav .music {\n  top: -1px;\n  left: -10px;\n  width: 40px;\n  height: 16px;\n}\nbody #nav .music .icon {\n  width: 20px;\n  height: 20px;\n}\nbody #nav .login {\n  float: right;\n  margin-right: 10px;\n  display: flex;\n}\nbody #nav .login:hover .lgin .login-github,\nbody #nav .login:hover .lgin .login-normal {\n  transition: all .3s;\n  display: block;\n}\nbody #nav .login:hover .lgin .line.another {\n  transition: all .3s;\n  display: block;\n}\nbody #nav .login .lgin {\n  margin: 6px;\n  color: #ffffff;\n  font-size: 12px;\n}\nbody #nav .login .lgin:hover {\n  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3), 0 0 6px #66ccff;\n}\nbody #nav .login .lgin img {\n  width: 20px;\n  height: 20px;\n  border-radius: 50%;\n}\nbody #nav .login .lgin a {\n  text-decoration: none;\n  color: #ffffff;\n}\nbody #nav .login .lgin .login-github,\nbody #nav .login .lgin .login-normal {\n  display: none;\n  font-size: 12px;\n}\nbody #nav .login .lgin .login-github:hover,\nbody #nav .login .lgin .login-normal:hover {\n  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3), 0 0 6px #66ccff;\n}\nbody #nav .login .lgin .login-github .iconfont,\nbody #nav .login .lgin .login-normal .iconfont {\n  color: #ffffff;\n}\nbody #nav .login .lgin .login-github .iconfont:hover,\nbody #nav .login .lgin .login-normal .iconfont:hover {\n  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3), 0 0 6px #66ccff;\n}\nbody #nav .login .lgin .line.another {\n  display: none;\n}\nbody #content {\n  position: relative;\n  margin: 20px 0 10px 30px;\n}\n.animation {\n  animation: 6s infinite rotate linear;\n}\n@keyframes rotate {\n  0% {\n    transform: rotateZ(0deg);\n  }\n  100% {\n    transform: rotateZ(360deg);\n  }\n}\n", ""]);
 
 // exports
 
@@ -1444,7 +1445,7 @@ Note.prototype = {
 				  '</svg>' +
 				  '</div>' +
 
-				  '<div class="note-devare"><i class="iconfont icon-devare"></i></div>' + 
+				  '<div class="note-delete"><i class="iconfont icon-delete"></i></div>' + 
 				  '</div>' +
 
 				  '<div class="note-ct" contenteditable="true">' +				  
@@ -1472,6 +1473,7 @@ Note.prototype = {
 		var $noteCt = this.$note.find('.note-ct')
 		var $animalIcon = $noteHeader.find('.animal .icon use')
 		var $changeDoll = $('.change-doll')
+		var $animalIcon2 = $changeDoll.find('.icon use')
 		var $changeLogo = $('.change-logo')
 		var $music = $('.music')
 
@@ -1485,18 +1487,16 @@ Note.prototype = {
 		$noteHeader.css('background-color', color[num] )		
 		$noteCt.css('background-color', color[1-num] )
 		$animalIcon.attr('xlink:href', animal)
-		if($changeDoll.css('color') === 'rgb(240, 106, 109)') {
-			$animalIcon.attr('xlink:href', iceCream)
-		}
+		$animalIcon2.attr('xlink:href', animal)
+
  		var i = 0,
  			j = 0,
  			k = 0
 		$changeDoll.on('click', function(){
-			var arr1 = [iceCream, animal]
-			var arr2 = ['rgb(240, 106, 109)', 'rgb(102, 204, 255)']
+			var arr = [iceCream, animal]
 			i = i%2
-			$changeDoll.css('color', arr2[i])
-			$animalIcon.attr('xlink:href', arr1[i])
+			$animalIcon.attr('xlink:href', arr[i])
+			$animalIcon2.attr('xlink:href', arr[i])
 			i++
 		})
 
@@ -1505,6 +1505,10 @@ Note.prototype = {
 			var arr = ['rgb(240, 106, 109)', 'rgb(38, 163, 130)']
 			j = j%2
 			_this.str = '<style type=text/css class="logo-color">'+
+						'body #nav .change-logo .one:before,'+
+						'body #nav .change-logo .one:after,'+
+						'body #nav .change-logo .two:before,'+
+						'body #nav .change-logo .two:after,'+
 						'.note .note-header .logo .one:before,'+
 						'.note .note-header .logo .one:after,'+
 						'.note .note-header .logo .two:before,'+
@@ -1512,7 +1516,6 @@ Note.prototype = {
 						'{background-color:'+
 						arr[j]+
 						'}</style>'
-			$changeLogo.css('color', arr[j])
 			if ($('head .logo-color')) {
 				$('head .logo-color').remove()
 			}
@@ -1528,26 +1531,31 @@ Note.prototype = {
 		audio.src = path.join(__dirname, '../audio/Preparation.mp3')
 		audio.volume = .5
 		audio.autoplay = true
+		var music = document.querySelector('.music svg')
+		audio.addEventListener('playing', function(){
+			music.classList.add('animation')
+		})
+		audio.addEventListener('pause', function(){
+			music.classList.remove('animation')
+		})
 		audio.addEventListener('ended', function(){
 			setTimeout(function(){
 				audio.src = path.join(__dirname, '../audio/Preparation.mp3')
 			}, 500)
 		})
 		
-		$music.on('click', function(){
-			var arr = ['MusicOff', 'MusicOn']
-			var color = ['rgb(240, 106, 109)', 'rgb(102, 204, 255)']
-			k = k % 2
-			$music.css('color', color[k])
-			document.querySelector('.music').innerText = arr[k]
-			if(arr[k] === 'MusicOff'){
+		music.addEventListener('click', function(){
+			function pause(){
 				audio.pause()
-			}else{
+			}
+			function play(){
 				audio.play()
 			}
+			var arr = [pause, play]
+			k = k % 2
+			arr[k]()
 			k++
 		})
-
 	},
 
 	setLayout: function(){
@@ -1566,10 +1574,10 @@ Note.prototype = {
 			$noteHeader = $note.find('.note-header'),
 			$noteCt = $note.find('.note-ct'),
 			$date = this.$note.find('.note-footer .date'),
-			$devare = $note.find('.note-devare')
+			$delete = $note.find('.note-delete')
 
-		$devare.on('click', function(){
-			_this.devare()
+		$delete.on('click', function(){
+			_this.delete()
 		})
 
 		//通过html5自带的contenteditable属性，改变内容后设置了save事件
@@ -1588,9 +1596,9 @@ Note.prototype = {
 								
 				var str = $noteCt.html() + $date.html()
 				if(_this.id){
-					_this.edit($noteCt.html(), $date.html())
+					_this.edit(str)
 				}else{
-					_this.add($noteCt.html(), $date.html())
+					_this.add(str)
 				} 
 				
 			}
@@ -1664,17 +1672,19 @@ Note.prototype = {
 	},
 
 	//删除note
-	devare: function(){
+	delete: function(){
 		var _this = this
-		$.post('/api/notes/devare', {
+		$.post('/api/notes/delete', {
 			id: this.id
 		}).done(function(ret){
 			if(ret.status === 0){				
 				_this.$note.remove()
 				Event.fire('waterfall')
-				Toast('devare success')
+				Toast('delete success')
+			}else{
+				Toast(ret.errorMsg)
 			}	
-			Toast(ret.errorMsg) 
+			 
 		})
 	}
 }

@@ -33,7 +33,7 @@ var Note = sequelize.define('note', {
 
 /* 测试添加数据到数据库中*/
 // Note.sync().then(function(){
-// 	Note.create({text: 'hello world'})
+// 	Note.create({text: 'hello world'})  
 // }).then(function(){
 // 	Note.findAll({raw:true}).then(function(notes) {
 // 	  console.log(notes)

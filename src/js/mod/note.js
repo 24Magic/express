@@ -95,7 +95,7 @@ Note.prototype = {
 				  '</svg>' +
 				  '</div>' +
 
-				  '<div class="note-devare"><i class="iconfont icon-devare"></i></div>' + 
+				  '<div class="note-delete"><i class="iconfont icon-delete"></i></div>' + 
 				  '</div>' +
 
 				  '<div class="note-ct" contenteditable="true">' +				  
@@ -123,6 +123,7 @@ Note.prototype = {
 		var $noteCt = this.$note.find('.note-ct')
 		var $animalIcon = $noteHeader.find('.animal .icon use')
 		var $changeDoll = $('.change-doll')
+		var $animalIcon2 = $changeDoll.find('.icon use')
 		var $changeLogo = $('.change-logo')
 		var $music = $('.music')
 
@@ -136,18 +137,16 @@ Note.prototype = {
 		$noteHeader.css('background-color', color[num] )		
 		$noteCt.css('background-color', color[1-num] )
 		$animalIcon.attr('xlink:href', animal)
-		if($changeDoll.css('color') === 'rgb(240, 106, 109)') {
-			$animalIcon.attr('xlink:href', iceCream)
-		}
+		$animalIcon2.attr('xlink:href', animal)
+
  		var i = 0,
  			j = 0,
  			k = 0
 		$changeDoll.on('click', function(){
-			var arr1 = [iceCream, animal]
-			var arr2 = ['rgb(240, 106, 109)', 'rgb(102, 204, 255)']
+			var arr = [iceCream, animal]
 			i = i%2
-			$changeDoll.css('color', arr2[i])
-			$animalIcon.attr('xlink:href', arr1[i])
+			$animalIcon.attr('xlink:href', arr[i])
+			$animalIcon2.attr('xlink:href', arr[i])
 			i++
 		})
 
@@ -156,6 +155,10 @@ Note.prototype = {
 			var arr = ['rgb(240, 106, 109)', 'rgb(38, 163, 130)']
 			j = j%2
 			_this.str = '<style type=text/css class="logo-color">'+
+						'body #nav .change-logo .one:before,'+
+						'body #nav .change-logo .one:after,'+
+						'body #nav .change-logo .two:before,'+
+						'body #nav .change-logo .two:after,'+
 						'.note .note-header .logo .one:before,'+
 						'.note .note-header .logo .one:after,'+
 						'.note .note-header .logo .two:before,'+
@@ -163,7 +166,6 @@ Note.prototype = {
 						'{background-color:'+
 						arr[j]+
 						'}</style>'
-			$changeLogo.css('color', arr[j])
 			if ($('head .logo-color')) {
 				$('head .logo-color').remove()
 			}
@@ -179,26 +181,31 @@ Note.prototype = {
 		audio.src = path.join(__dirname, '../audio/Preparation.mp3')
 		audio.volume = .5
 		audio.autoplay = true
+		var music = document.querySelector('.music svg')
+		audio.addEventListener('playing', function(){
+			music.classList.add('animation')
+		})
+		audio.addEventListener('pause', function(){
+			music.classList.remove('animation')
+		})
 		audio.addEventListener('ended', function(){
 			setTimeout(function(){
 				audio.src = path.join(__dirname, '../audio/Preparation.mp3')
 			}, 500)
 		})
 		
-		$music.on('click', function(){
-			var arr = ['MusicOff', 'MusicOn']
-			var color = ['rgb(240, 106, 109)', 'rgb(102, 204, 255)']
-			k = k % 2
-			$music.css('color', color[k])
-			document.querySelector('.music').innerText = arr[k]
-			if(arr[k] === 'MusicOff'){
+		music.addEventListener('click', function(){
+			function pause(){
 				audio.pause()
-			}else{
+			}
+			function play(){
 				audio.play()
 			}
+			var arr = [pause, play]
+			k = k % 2
+			arr[k]()
 			k++
 		})
-
 	},
 
 	setLayout: function(){
@@ -217,10 +224,10 @@ Note.prototype = {
 			$noteHeader = $note.find('.note-header'),
 			$noteCt = $note.find('.note-ct'),
 			$date = this.$note.find('.note-footer .date'),
-			$devare = $note.find('.note-devare')
+			$delete = $note.find('.note-delete')
 
-		$devare.on('click', function(){
-			_this.devare()
+		$delete.on('click', function(){
+			_this.delete()
 		})
 
 		//通过html5自带的contenteditable属性，改变内容后设置了save事件
@@ -239,9 +246,9 @@ Note.prototype = {
 								
 				var str = $noteCt.html() + $date.html()
 				if(_this.id){
-					_this.edit($noteCt.html(), $date.html())
+					_this.edit(str)
 				}else{
-					_this.add($noteCt.html(), $date.html())
+					_this.add(str)
 				} 
 				
 			}
@@ -315,17 +322,19 @@ Note.prototype = {
 	},
 
 	//删除note
-	devare: function(){
+	delete: function(){
 		var _this = this
-		$.post('/api/notes/devare', {
+		$.post('/api/notes/delete', {
 			id: this.id
 		}).done(function(ret){
 			if(ret.status === 0){				
 				_this.$note.remove()
 				Event.fire('waterfall')
-				Toast('devare success')
+				Toast('delete success')
+			}else{
+				Toast(ret.errorMsg)
 			}	
-			Toast(ret.errorMsg) 
+			 
 		})
 	}
 }

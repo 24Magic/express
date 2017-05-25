@@ -14,9 +14,20 @@
 
 <nav id="nav">
 	<div class="add-note"><i class="iconfont icon-add"></i></div>
-	<div class="change-logo">ChangeLogoColor</div>
-	<div class="change-doll">ChangeDoll</div>
-	<div class="music">MusicOn</div>
+	<div class="change-logo">
+		<div class="one"></div>
+		<div class="two"></div>
+	</div>
+	<div class="change-doll">
+		<svg class="icon" aria-hidden="true">
+			<use xlink:href=""></use>
+		</svg>
+	</div>
+	<div class="music">
+		<svg class="icon" aria-hidden="true">
+			<use xlink:href="#icon-music-copy"></use>
+		</svg>
+	</div>
 	<div class="login">
 		<% if(isLogin){ %>
 			<div class="lgin"><img src="<%= user.avatar %>"></div>
@@ -24,16 +35,19 @@
 			<div class="lgin"><span class="line"> | </span></div>
 			<div class="lgin"><a href="/auth/logout">注销</a></div>
 		<% }else{ %>
-			<a href="/auth/github" class="login-github"><i class="iconfont icon-github"></i></a>
-			<a href="/auth/normal" class="login-normal">饥人谷登陆</a>
+			<div class="lgin">
+				<a href="/auth/github" class="login-github"><i class="iconfont icon-github"></i></a>
+			</div>
+			<div class="lgin">
+				<a href="/auth/normal" class="login-normal">饥人谷</a>
+			</div>			
+			<div class="lgin"><span class="line another"> | </span></div>
+			<div class="lgin">登陆</div>
 		<% } %>
 	</div>
 </nav>
 
-	<div id="content">
-	
-	</div>
-
+<div id="content"></div>
 
 <script src="./css/icon-note/iconfont.js"></script>
 <script src="./javascripts/bundle.js"></script>

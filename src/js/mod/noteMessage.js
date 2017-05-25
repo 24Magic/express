@@ -12,7 +12,7 @@ var NoteMessage = (function(){
 		 			var id = artical.id
 		 			var date = artical.text.slice(-15)
 		 			var reg = /\d{2}:\d{2}\s\d{4}-\d-\d{2}/g
-		 			if(!date.match(reg)){
+		 			if(date.match(reg) != date){
 		 				var date_ =  new Date()
 						var year = date_.getFullYear()
 						var month = date_.getMonth() + 1
@@ -25,6 +25,7 @@ var NoteMessage = (function(){
 		 				// date = '08:08 2008-08-08'
 		 			}
 		 			var text = artical.text.replace(date, '')
+
 		 			new Note({
 		 				id: id,
 		 				context: text,
